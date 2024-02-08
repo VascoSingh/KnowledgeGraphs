@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useState } from 'react';
+import KnowledgeGraph from './components/KnowledgeGraph';
+import DynamicTreeGraph from './components/DynamicTreeGraph';
 
 function App() {
+  const [currentView, setCurrentView] = useState('knowledgeGraph');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={() => setCurrentView('knowledgeGraph')}>Knowledge Graph</button>
+      <button onClick={() => setCurrentView('dynamicTreeGraph')}>Dynamic Tree Graph</button>
+      {currentView === 'knowledgeGraph' && <KnowledgeGraph />}
+      {currentView === 'dynamicTreeGraph' && <DynamicTreeGraph />}
     </div>
   );
 }
