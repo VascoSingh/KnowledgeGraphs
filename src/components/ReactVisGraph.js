@@ -1,39 +1,35 @@
-import React from 'react'
-import Graph from 'react-vis-network-graph'
+import React from 'react';
+import Graph from 'react-vis-network-graph';
 
 export default function GraphView() {
     const graph = {
         nodes: [
-            {id: 1, label: "Node 1", title: "node 1 tooltip text",
-            shape: "box"},
-            {id: 2, label: "Node 2", title: "node 2 tooltip text",
-            shape: "circle"},
-            {id: 3, label: "Node 3", title: "node 3 tooltip text",
-            shape: "diamond"},
-            {id: 4, label: "Node 4", title: "node 4 tooltip text",
-            shape: "star"},
-            {id: 5, label: "Node 5", title: "node 5 tooltip text"},
-            {id: 6, label: "Node 6", title: "node 6 tooltip text"},
-            {id: 7, label: "Node 7", title: "node 7 tooltip text"},
-            {id: 8, label: "Node 8", title: "node 8 tooltip text"},
-            {id: 9, label: "Node 9", title: "node 9 tooltip text"}
+            {id: 1, label: "Variables", title: "Variables: Represent quantities that can change", shape: "box", color: {background: "#a3c2a4", border: "#5c8b5b"}},
+            {id: 2, label: "Expressions", title: "Expressions: Combinations of variables and constants", shape: "circle", color: {background: "#a3c2a4", border: "#5c8b5b"}},
+            {id: 3, label: "Equations", title: "Equations: Statements that two expressions are equal", shape: "diamond", color: {background: "#a3c2a4", border: "#5c8b5b"}},
+            {id: 4, label: "Functions", title: "Functions: Relations that assign exactly one output for each input", shape: "star", color: {background: "#a3c2a4", border: "#5c8b5b"}},
+            {id: 5, label: "Linear Equations", title: "Linear Equations: Equations that graph as straight lines", color: {background: "#a3c2a4", border: "#5c8b5b"}},
+            {id: 6, label: "Systems of Equations", title: "Systems of Equations: Sets of equations with multiple variables", color: {background: "#a3c2a4", border: "#5c8b5b"}},
+            {id: 7, label: "Inequalities", title: "Inequalities: Expressions that define a range of values", color: {background: "#a3c2a4", border: "#5c8b5b"}},
+            {id: 8, label: "Polynomials", title: "Polynomials: Expressions involving sums of powers of variables", color: {background: "#a3c2a4", border: "#5c8b5b"}},
+            {id: 9, label: "Factoring", title: "Factoring: Breaking down a polynomial into simpler terms", color: {background: "#a3c2a4", border: "#5c8b5b"}}
         ],
         edges: [
-            {from: 1, to: 1, smooth: {type: "curvedCW"}, arrows: {from: {enabled: true, type: "circle"}, to: {enabled: true, type: "circle"}}},
-            {from: 1, to: 7, arrows: {from: {enabled: true, type: "vee"}, to: {enabled: true, type: "vee"}}},
-            {from: 1, to: 3, arrows: {to: {enabled: true, type: "curve"}}},
-            {from: 6, to: 5, color: {highlight: "#fff", opacity: 0.2}},
-            {from: 6, to: 2},
-            {from: 7, to: 2},
-            {from: 6, to: 7},
-            {from: 6, to: 8},
-            {from: 7, to: 8},
-            {from: 8, to: 2},
-            {from: 3, to: 7},
+            {from: 1, to: 2, smooth: {type: "curvedCW"}, arrows: {from: {enabled: true, type: "circle"}, to: {enabled: true, type: "circle"}}, color: "#4caf50"},
+            {from: 2, to: 3, arrows: {from: {enabled: true, type: "vee"}, to: {enabled: true, type: "vee"}}, color: "#4caf50"},
+            {from: 3, to: 4, arrows: {to: {enabled: true, type: "curve"}}, color: "#4caf50"},
+            {from: 4, to: 5, color: {color: "#4caf50", highlight: "#81c784", opacity: 0.5}},
+            {from: 5, to: 6, color: "#4caf50"},
+            {from: 6, to: 7, color: "#4caf50"},
+            {from: 7, to: 8, color: "#4caf50"},
+            {from: 8, to: 9, color: "#4caf50"},
+            {from: 9, to: 3, color: "#4caf50"},
+            {from: 3, to: 7, color: "#4caf50"},
+            {from: 2, to: 8, color: "#4caf50"}
         ]
-    }
+    };
 
-    var options = {
+    const options = {
         physics: {
             enabled: false
         },
@@ -42,25 +38,25 @@ export default function GraphView() {
         },
         nodes: {
             borderWidth: 2,
-            size: 40,
+            size: 30,
             color: {
-                border: "#222222",
-                background: "#666666"
+                border: "#5c8b5b",
+                background: "#a3c2a4"
             },
-            font: {color: "yellow"}
+            font: {color: "#3e4b47"}
         },
         edges: {
-            color: "yellow"
+            color: "#4caf50",
+            smooth: true
         },
         shadow: true,
-        smooth: true,
         height: "900px"
-    }
-  return (
-    <div className='container'>
-        <Graph 
-            graph={graph}
-            options={options}
+    };
+    return (
+        <div className='container'>
+            <Graph 
+                graph={graph}
+                options={options}
         />
     </div>
   )
